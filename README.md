@@ -23,6 +23,6 @@ Then visit <http://localhost:8000>.
 
 ## Contact
 
-- Email: [charvipatel02@gmail.com]
+- Email: [charvipatel02@gmail.com](mailto:charvipatel02@gmail.com)
 - GitHub: [@charvip](https://github.com/charvip)
 - LinkedIn: [charvipatel02](https://www.linkedin.com/in/charvipatel02)

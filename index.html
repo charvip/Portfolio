@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charvi Patel | Software Engineer</title>
+<meta name="description" content="Charvi Patel: software engineer and Ohio State CSE graduate. Web development, SQL data analysis, and applied AI; seeking SWE and computer vision roles.">
+<meta property="og:title" content="Charvi Patel | Software Engineer">
+<meta property="og:description" content="Projects in web development, data analysis, and applied AI.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Charvi Patel, software engineer, with a night-sky constellation map of her projects">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230C1024'/><path d='M16 6l2.6 7.4H26l-6 4.4 2.3 7.2L16 20.6 9.7 25l2.3-7.2-6-4.4h7.4z' fill='%23FFC98B'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-background: #0C1024;
+  --color-surface: #151A36;
+  --color-surface-alt: #111631;
+  --color-border: #2A3058;
+  --color-text: #EEF0F8;
+  --color-text-muted: #B8BCD3;
+  --color-copy: #C9CDE0;
+  --color-accent: #FFC98B;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+.site-shell {
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: #FFE2BF;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .25; }
+  50% { opacity: 1; }
+}
+
+@keyframes moonglow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(255,236,200,.45)); }
+  50% { filter: drop-shadow(0 0 26px rgba(255,236,200,.8)); }
+}
+
+@keyframes shoot {
+  0% { transform: translate(0,0) rotate(-20deg); opacity: 0; }
+  2% { opacity: 1; }
+  10%, 100% { transform: translate(-520px,190px) rotate(-20deg); opacity: 0; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-30px); }
+}
+
+@keyframes sway2 {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(24px); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes drawline {
+  0% { stroke-dashoffset: 1; }
+  45%, 100% { stroke-dashoffset: 0; }
+}
+
+@keyframes connect {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,201,139,0); }
+  25% { box-shadow: 0 0 0 3px var(--color-accent), 0 0 32px rgba(255,201,139,.4); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: .45; transform: scale(.9); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
+.hero {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0B1030 0%, #1B1F52 45%, #4A3A78 72%, #C9776A 92%, #F2A36B 100%);
+}
+
+#stars {
+  position: absolute;
+  inset: 0 0 35% 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #FFFFFF;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.shoot {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, #FFFFFF, rgba(255,255,255,0));
+  animation: shoot 11s ease-out infinite;
+}
+
+#stars .shoot:first-child { top: 10%; left: 85%; }
+#stars .shoot:nth-child(2) { top: 28%; left: 60%; animation-delay: 5.5s; }
+
+.moon {
+  position: absolute;
+  top: 120px;
+  right: 12%;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  box-shadow: inset -26px 8px 0 0 #FFF0D2;
+  animation: moonglow 6s ease-in-out infinite;
+}
+
+.site-header,
+.hero-content,
+#map,
+#projects,
+#about > .about-grid,
+#contact {
+  max-width: 1160px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.site-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 24px;
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.site-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.hero-content {
+  position: relative;
+  padding: 96px 24px 0;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--color-accent);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.name {
+  margin: 0;
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+
+.hero-copy {
+  max-width: 640px;
+  margin: 28px 0 0;
+  color: #DCDFEE;
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+.hero-actions,
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hero-actions { margin-top: 40px; }
+.contact-actions { justify-content: center; }
+
+.button,
+#contact a {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button-primary,
+#contact a:first-child {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: var(--color-accent);
+  color: #1A1530;
+  font-weight: 700;
+}
+
+.button-secondary {
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12);
+  color: #FFFFFF;
+}
+
+.hero-landscape {
+  position: absolute;
+  right: -60px;
+  bottom: 0;
+  left: -60px;
+  display: block;
+  width: calc(100% + 120px);
+  height: 200px;
+}
+
+.hill1 { animation: sway 18s ease-in-out infinite; }
+.hill2 { animation: sway2 24s ease-in-out infinite; }
+
+#map {
+  padding: 72px 24px 24px;
+}
+
+.section-heading {
+  margin-bottom: 12px;
+}
+
+#map h2,
+#projects h2 {
+  margin: 0 0 12px;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+#map h2 { margin: 0; }
+
+.section-note,
+.section-intro,
+#projects > p {
+  color: var(--color-text-muted);
+}
+
+.section-note {
+  margin: 0 0 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.section-intro {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.chart {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: radial-gradient(ellipse at 80% 10%, #1D2350 0%, #111631 60%);
+  padding: 16px;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --label-scale is set by the script at the bottom so labels stay readable
+   when the map shrinks on small screens. */
+.chart text {
+  font-family: var(--font-body);
+}
+
+.chart .project-name {
+  fill: var(--color-text);
+  font-size: calc(15px * var(--label-scale, 1));
+  font-weight: 600;
+}
+
+.chart .project-detail {
+  fill: var(--color-text-muted);
+  font-size: calc(13px * var(--label-scale, 1));
+}
+
+.chart .focus-name { fill: #C9C4FF; }
+
+.rings { fill: none; stroke: rgba(238,240,248,.07); }
+.bg-stars,
+.stars { fill: #FFFFFF; }
+
+.tw { animation: twinkle 3.5s ease-in-out infinite; }
+.tw:nth-of-type(3n+1) { animation-delay: -1s; }
+.tw:nth-of-type(3n+2) { animation-delay: -2.2s; }
+.tw:nth-of-type(3n)   { animation-delay: -.5s; }
+
+.nebula {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glow 4s ease-in-out infinite;
+}
+
+/* Constellations: --c is the line colour, --i staggers the intro animation.
+   pathLength="1" on each path normalises the dash maths, so every line ends
+   exactly on its last star. */
+.cline {
+  fill: none;
+  stroke: var(--c);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1 1;
+  stroke-opacity: .4;
+  transition: stroke-opacity .3s;
+  animation: drawline 3.2s ease-out calc(.2s + var(--i, 0) * .7s) both;
+}
+
+.const { transition: opacity .25s; }
+
+/* Narrow screens: the script switches the viewBox to a portrait layout and each
+   constellation moves to its own slot (--mx / --my are user-unit offsets). */
+@media (max-width: 760px) {
+  .const { transform: translate(var(--mx, 0), var(--my, 0)); }
+}
+.const:hover .cline,
+.const:focus-visible .cline {
+  stroke-opacity: 1;
+  animation: connect .9s ease-out both;
+}
+
+/* Only dim the other constellations while one of them is hovered */
+.chart:has(.const:hover, .const:focus-visible) .const:not(:hover, :focus-visible) { opacity: .35; }
+
+/* Clickable constellations: pointer cursor and a keyboard focus ring on the hit area */
+.const[data-project] { cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
+.const:focus-visible .hit { stroke: var(--c); stroke-width: 1.5; stroke-dasharray: 6 6; }
+
+/* Invisible hit area, added by the script, so the whole constellation is hoverable */
+.hit { fill: transparent; pointer-events: all; }
+
+#projects {
+  padding: 72px 24px 88px;
+}
+
+#projects > p:first-of-type {
+  margin: 0 0 40px;
+  font-size: 18px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 24px;
+}
+
+.card {
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+  animation: rise .7s ease-out both;
+  transition: transform .2s, border-color .2s;
+}
+
+.card:nth-child(1) { animation-delay: .1s; }
+.card:nth-child(2) { animation-delay: .2s; }
+.card:nth-child(3) { animation-delay: .3s; }
+.card:nth-child(4) { animation-delay: .4s; }
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+}
+
+/* Reached from the project map: scroll clear of the viewport edge and pulse once */
+.card { scroll-margin-top: 24px; }
+.card { position: relative; }
+.card.is-targeted { border-color: var(--color-accent); }
+
+/* The glow runs on a pseudo-element so it never touches the card's own
+   entrance animation (which would otherwise replay when the class is removed). */
+.card.is-targeted::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: pulse 1.8s ease-out;
+}
+
+.project-tag {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #1A1530;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.card:nth-child(3) .project-tag { background: #C9C4FF; }
+.card:nth-child(4) .project-tag { background: #9FE3C6; }
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.card p {
+  margin: 0 0 20px;
+  color: var(--color-copy);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.currently-developing {
+  margin: 32px 0 0;
+  font-size: 17px;
+}
+
+.currently-developing span {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+#about {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+}
+
+#about > .about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 40px;
+  padding: 72px 24px;
+}
+
+#about h2 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+#about h3 {
+  margin: 0 0 16px;
+  color: var(--color-accent);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#about p {
+  margin: 0;
+  color: var(--color-copy);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+#contact {
+  padding: 88px 24px 112px;
+  text-align: center;
+}
+
+#contact h2 {
+  margin: 0 0 16px;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+#contact > p {
+  max-width: 620px;
+  margin: 0 auto 32px;
+  color: var(--color-copy);
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+#contact a:not(:first-child) {
+  border: 1px solid #3A4170;
+  color: var(--color-text);
+}
+
+/* Shared hover/focus feel for the hero and contact buttons. Text colour is pinned
+   so the global a:hover colour never washes out the label. */
+.button,
+#contact a {
+  transition: transform .2s, background-color .2s, border-color .2s, box-shadow .2s;
+}
+
+.button:hover,
+.button:focus-visible,
+#contact a:hover,
+#contact a:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible,
+#contact a:first-child:hover,
+#contact a:first-child:focus-visible {
+  background: #FFD9AE;
+  color: #1A1530;
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.6);
+  color: #FFFFFF;
+}
+
+#contact a:not(:first-child):hover,
+#contact a:not(:first-child):focus-visible {
+  background: var(--color-surface);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+@media (max-width: 900px) {
+  .name { font-size: 76px; }
+}
+
+@media (max-width: 760px) {
+  .site-header { padding: 20px 20px 0; }
+  .site-nav { gap: 8px 20px; font-size: 15px; }
+  .hero { min-height: 0; padding-bottom: 150px; }
+  .hero-content { padding: 56px 20px 0; }
+  .eyebrow { font-size: 15px; }
+  .name { font-size: 52px; }
+  .hero-copy { font-size: 18px; }
+  .hero-actions { margin-top: 28px; }
+  .hero-landscape { height: 120px; }
+  .moon {
+    top: 84px;
+    right: 20px;
+    width: 34px;
+    height: 34px;
+    box-shadow: inset -10px 4px 0 0 #FFF0D2;
+  }
+  #map { padding: 48px 20px 16px; }
+  #projects { padding: 48px 20px 64px; }
+  #about > .about-grid { padding: 48px 20px; gap: 32px; }
+  #contact { padding: 64px 20px 80px; }
+  #map h2, #projects h2 { font-size: 32px; }
+  #contact h2 { font-size: 34px; }
+  #contact > p { font-size: 17px; }
+  .card { padding: 22px; }
+  .card h3 { font-size: 22px; }
+  .card p { font-size: 16px; }
+  .button, #contact a { justify-content: center; }
+  .hero-actions .button, .contact-actions a { flex: 1 1 100%; }
+  #contact a { overflow-wrap: anywhere; }
+
+  .chart { padding: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="site-shell">
+
+  <section class="hero">
+    <div id="stars" aria-hidden="true">
+      <span class="shoot"></span>
+      <span class="shoot"></span>
+    </div>
+    <div class="moon" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <span class="brand">Charvi Patel</span>
+      <nav class="site-nav">
+        <a href="#map">Project Map</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero-content">
+      <p class="eyebrow">Software Engineer · B.S. Computer Science &amp; Engineering, The Ohio State University</p>
+      <h1 class="name">Charvi Patel</h1>
+      <p class="hero-copy">Software engineer with experience in web development, SQL data analysis, and LLM-powered applications. Seeking entry-level software engineering and computer vision roles.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#projects">View Projects</a>
+        <a class="button button-secondary" href="Charvi_Patel_Resume.pdf" target="_blank">Download Résumé</a>
+      </div>
+    </div>
+
+    <svg class="hero-landscape" aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none">
+      <path class="hill2" d="M0 140 C 200 80, 380 120, 560 100 S 900 60, 1100 110 S 1360 90, 1440 120 L1440 220 L0 220 Z" fill="#2A2350"/>
+      <path class="hill1" d="M0 180 C 180 130, 360 170, 600 150 S 980 120, 1200 160 S 1400 150, 1440 170 L1440 220 L0 220 Z" fill="#0C1024"/>
+    </svg>
+  </section>
+
+  <section id="map">
+    <div class="section-heading">
+      <h2>Project Map</h2>
+    </div>
+    <p class="section-intro">An overview of my work across web development, data, and applied AI.</p>
+    <p class="section-note">Each constellation is a project. Hover to connect the stars, click one to jump to its project.</p>
+    <figure class="chart">
+      <svg viewBox="0 0 1100 500" role="img" aria-label="Project map: constellations for the Airbnb Guest Guide, Split-the-Bill, CodeMap, and Funding Data Analysis, with computer vision marked as the next area of focus">
+        <defs>
+          <radialGradient id="neb"><stop offset="0" stop-color="#C9C4FF" stop-opacity=".9"/><stop offset=".5" stop-color="#7A70F0" stop-opacity=".35"/><stop offset="1" stop-color="#7A70F0" stop-opacity="0"/></radialGradient>
+        </defs>
+        <g class="rings"><circle cx="550" cy="250" r="150"/><circle cx="550" cy="250" r="260"/><circle cx="550" cy="250" r="370"/></g>
+        <g class="bg-stars">
+          <circle class="tw" cx="60" cy="60" r="1.5"/><circle class="tw" cx="330" cy="70" r="1.2"/><circle class="tw" cx="620" cy="60" r="1.6"/><circle class="tw" cx="1040" cy="300" r="1.4"/><circle class="tw" cx="360" cy="440" r="1.3"/><circle class="tw" cx="980" cy="440" r="1.5"/><circle class="tw" cx="40" cy="220" r="1.2"/><circle class="tw" cx="760" cy="150" r="1.2"/>
+        </g>
+        <g class="const" data-project="project-airbnb" tabindex="0" role="link" aria-label="Airbnb Guest Guide: jump to project details" style="--c:#FFC98B;--i:0;--mx:-80px;--my:-210px">
+          <path class="cline" pathLength="1" d="M110 300 L190 230 L270 300 L270 400 L110 400 Z"/>
+          <g class="stars"><circle cx="110" cy="300" r="4"/><circle cx="190" cy="230" r="5.5"/><circle cx="270" cy="300" r="4"/><circle cx="270" cy="400" r="3.5"/><circle cx="110" cy="400" r="3.5"/></g>
+          <text class="project-name" x="110" y="436">Airbnb Guest Guide<tspan class="project-detail" x="110" dy="1.55em">Web · Vercel</tspan></text>
+        </g>
+        <g class="const" data-project="project-split-the-bill" tabindex="0" role="link" aria-label="Split-the-Bill: jump to project details" style="--c:#FFC98B;--i:1;--mx:-70px;--my:-90px">
+          <path class="cline" pathLength="1" d="M400 170 L480 130 L560 170 M480 130 L480 250 M420 250 L540 250"/>
+          <g class="stars"><circle cx="400" cy="170" r="4"/><circle cx="480" cy="130" r="5.5"/><circle cx="560" cy="170" r="4"/><circle cx="480" cy="250" r="3.5"/><circle cx="420" cy="250" r="3"/><circle cx="540" cy="250" r="3"/></g>
+          <text class="project-name" x="420" y="286">Split-the-Bill<tspan class="project-detail" x="420" dy="1.55em">Web App · Team project</tspan></text>
+        </g>
+        <g class="const" data-project="project-codemap" tabindex="0" role="link" aria-label="CodeMap: jump to project details" style="--c:#C9C4FF;--i:2;--mx:-510px;--my:98px">
+          <path class="cline" pathLength="1" d="M660 330 L730 270 L800 310 L860 240 L940 280"/>
+          <g class="stars"><circle cx="660" cy="330" r="3.5"/><circle cx="730" cy="270" r="4.5"/><circle cx="800" cy="310" r="3.5"/><circle cx="860" cy="240" r="5.5"/><circle cx="940" cy="280" r="4"/></g>
+          <text class="project-name" x="820" y="206">CodeMap<tspan class="project-detail" x="820" dy="1.55em">LLM · Team project</tspan></text>
+        </g>
+        <g class="const" data-project="project-funding" tabindex="0" role="link" aria-label="Funding Data Analysis: jump to project details" style="--c:#9FE3C6;--i:3;--mx:-590px;--my:90px">
+          <path class="cline" pathLength="1" d="M620 420 L680 390 L750 430 L820 380"/>
+          <g class="stars"><circle cx="620" cy="420" r="3"/><circle cx="680" cy="390" r="4"/><circle cx="750" cy="430" r="3.5"/><circle cx="820" cy="380" r="5"/></g>
+          <text class="project-name" x="620" y="462">Funding Data Analysis<tspan class="project-detail" x="620" dy="1.55em">SQL · Ohio State</tspan></text>
+        </g>
+        <g class="const" style="--mx:-502px;--my:448px">
+          <circle class="nebula" cx="990" cy="70" r="48" fill="url(#neb)"/>
+          <g class="stars"><circle cx="990" cy="70" r="5"/></g>
+          <text class="project-name focus-name" x="955" y="138" text-anchor="middle">Computer Vision<tspan class="project-detail" x="955" dy="1.55em">Next area of focus</tspan></text>
+        </g>
+      </svg>
+    </figure>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Selected work in web development, data analysis, and applied AI.</p>
+    <div class="project-grid">
+      <article class="card" id="project-airbnb">
+        <span class="project-tag">Web · Live</span>
+        <h3>Airbnb Guest Guide</h3>
+        <p>Designed and deployed a multi-page guest guide for an active Airbnb rental, covering room walkthroughs, appliance instructions, essentials, local activities, and host contact. Refactored the codebase into reusable components and deployed on Vercel. Built with SvelteKit, TypeScript, and Tailwind CSS.</p>
+        <div class="project-links"><a href="https://magic-mountain-guide.vercel.app">View Live Site →</a><a href="https://github.com/charvip/Airbnb-Guide">View Code →</a></div>
+      </article>
+      <article class="card" id="project-split-the-bill">
+        <span class="project-tag">Web App · Team</span>
+        <h3>Split-the-Bill</h3>
+        <p>Co-developed an expense-sharing application that organizes costs by trip and supports unlimited expense entries, addressing limitations in existing tools such as Splitwise. Designed the database structure, built the settlement calculations between trip participants, and styled every page. Built with Ruby on Rails, SQLite, and custom CSS.</p>
+        <div class="project-links"><a href="https://github.com/charvip/Split-the-Bill">View Code →</a></div>
+      </article>
+      <article class="card" id="project-codemap">
+        <span class="project-tag">LLM · Team</span>
+        <h3>CodeMap</h3>
+        <p>An onboarding assistant that takes a codebase from a local file system or GitHub link and answers questions about it: what each file does, how the pieces fit together, what a function does and where to find it. Built by a team on a retrieval-augmented generation (RAG) workflow; I led prompt engineering and implemented the web interface.</p>
+        <div class="project-links"><a href="https://github.com/SamanthaSmith04/CodeMap">View Code →</a></div>
+      </article>
+      <article class="card" id="project-funding">
+        <span class="project-tag">Data · Student Employment</span>
+        <h3>Funding Data Analysis</h3>
+        <p>Used SQL on data uploaded from Excel to produce the figures behind the office's funding applications. Cleared unfinished records from the database and converted text responses to numeric values, making it possible to calculate the percentage of people in each demographic group. Also helped design a yearly survey with questions aimed at collecting accurate demographic data.</p>
+      </article>
+    </div>
+    <p class="currently-developing"><span>Currently developing:</span> a transportation data analysis using SQLite and DuckDB, and a state machine model for electric vehicle power transitions.</p>
+  </section>
+
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <h2>About</h2>
+        <p>Recent graduate of The Ohio State University with a B.S. in Computer Science and Engineering and a minor in Mathematics (May 2026). Experienced in web development and data analysis, with a strong mathematical foundation and a focus on software engineering and computer vision.</p>
+      </div>
+      <div>
+        <h3>Languages</h3>
+        <p>Python, Java, SQL, C++, JavaScript, HTML/CSS, Ruby</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <p>Git, Vercel, Linux, VS Code, Eclipse, MATLAB, SolidWorks, Ruby on Rails</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Get in Touch</h2>
+    <p>I am currently seeking entry-level software engineering and computer vision opportunities and would welcome the chance to connect.</p>
+    <div class="contact-actions">
+      <a href="mailto:charvipatel02@gmail.com">charvipatel02@gmail.com</a>
+      <a href="https://github.com/charvip">GitHub</a>
+      <a href="https://www.linkedin.com/in/charvipatel02">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+<script>
+(function(){
+  var box=document.getElementById('stars'); if(!box) return;
+  var seed=11; function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+  for(var i=0;i<90;i++){
+    var size=rnd()<0.85?1+rnd():2.2+rnd(), s=document.createElement('span');
+    s.className='star';
+    s.style.cssText='left:'+(rnd()*100).toFixed(2)+'%;top:'+(rnd()*100).toFixed(2)+'%;width:'+size.toFixed(1)+'px;height:'+size.toFixed(1)+'px;animation-delay:-'+(rnd()*4).toFixed(2)+'s;animation-duration:'+(2.5+rnd()*3).toFixed(2)+'s;'+(size>2.1?'box-shadow:0 0 6px #fff;':'');
+    box.insertBefore(s, box.firstChild);
+  }
+})();
+
+/* Project map: keep labels readable as the map scales, and make each
+   constellation hoverable as a whole by giving it a bounding-box hit area. */
+(function(){
+  var svg=document.querySelector('.chart svg'); if(!svg) return;
+  var NS='http://www.w3.org/2000/svg', PAD=16, MAX_SCALE=2.2, TARGET_PX=11, BASE_LABEL=15;
+  var VIEWBOX={wide:'0 0 1100 500', narrow:'0 0 600 650'}, narrow=window.matchMedia('(max-width: 760px)');
+  var consts=svg.querySelectorAll('.const');
+  var hits=Array.prototype.map.call(consts,function(g){
+    var r=document.createElementNS(NS,'rect'); r.setAttribute('class','hit'); g.insertBefore(r,g.firstChild); return r;
+  });
+  function layout(){
+    svg.setAttribute('viewBox',narrow.matches?VIEWBOX.narrow:VIEWBOX.wide);
+    var w=svg.getBoundingClientRect().width; if(!w) return;
+    var vbW=svg.viewBox.baseVal.width, scale=TARGET_PX*vbW/(BASE_LABEL*w);
+    svg.style.setProperty('--label-scale',Math.min(MAX_SCALE,Math.max(1,scale)).toFixed(2));
+    hits.forEach(function(r,i){
+      r.setAttribute('width',0); r.setAttribute('height',0);
+      var b=consts[i].getBBox();
+      r.setAttribute('x',b.x-PAD); r.setAttribute('y',b.y-PAD);
+      r.setAttribute('width',b.width+2*PAD); r.setAttribute('height',b.height+2*PAD);
+    });
+  }
+  /* Clicking (or Enter/Space on) a constellation jumps to its project card */
+  function openProject(g){
+    var card=document.getElementById(g.getAttribute('data-project')); if(!card) return;
+    card.scrollIntoView({behavior:'smooth',block:'center'});
+    card.classList.remove('is-targeted'); void card.offsetWidth; card.classList.add('is-targeted');
+    card.addEventListener('animationend',function done(e){
+      if(e.animationName!=='pulse') return;
+      card.classList.remove('is-targeted'); card.removeEventListener('animationend',done);
+    });
+  }
+  svg.querySelectorAll('.const[data-project]').forEach(function(g){
+    g.addEventListener('click',function(){ openProject(g); });
+    g.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openProject(g); }
+    });
+  });
+
+  layout();
+  window.addEventListener('resize',layout);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(layout);
+})();
+</script>
+</body>
+</html>
